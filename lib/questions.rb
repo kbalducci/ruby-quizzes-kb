@@ -3,7 +3,7 @@
 #There is an error in the following code.  Fix it!
 
 items = Array.new
-items.push{:a => "b", :c => "d"}
+items.push(:a => "b", :c => "d")
 
 #-------------------------------------------------#
 #Question 2. Regular Ball Super Ball
@@ -21,6 +21,13 @@ items.push{:a => "b", :c => "d"}
 # ball2 = Ball.new "super"
 # ball1.ball_type  #=> "regular"
 # ball2.ball_type  #=> "super"
+class Ball
+  attr_accessor :ball_type
+  def initialize(type = "regular")
+    @ball_type = type
+  end
+end
+
 
 #-------------------------------------------------#
 #Question 3. Sum Array
@@ -30,10 +37,18 @@ items.push{:a => "b", :c => "d"}
 #then you should return 0.
 
 def sum_array(arr)
+  if arr == []
+    return 0
+  else
+    arr.reduce(:+)
+
+  end
+
 end
 
-sum_array([]) == 0
-sum_array([1, 5.2, 4, 0, -1]) == 9.2
+
+# sum_array([]) == 0
+# sum_array([1, 5.2, 4, 0, -1]) == 9.2
 
 #-------------------------------------------------#
 #Question 4. One True Value
@@ -46,6 +61,14 @@ sum_array([1, 5.2, 4, 0, -1]) == 9.2
 #http://www.rubycuts.com/enum-any
 
 def any?(arr, &block)
+  arr.each do |x|
+    if block.call(x) == true
+      return true
+    end
+  end
+  false
+
+
 end
 
 #--------------------------------------------------#
@@ -60,7 +83,25 @@ end
 # multiplicands, but only two 1's in the product
 
 def vamp_numbers(arr)
+  product = arr.reduce(:*).to_s.chars
+  digits = arr.first.to_s.chars + arr.last.to_s.chars
+    if product.sort == digits.sort
+      true
+    else
+      false
+    end
 end
 
-vamp_numbers([6,21]) == true
-vamp_numbers([10,11]) == false
+
+  # product = x * y
+  # if product.to_s.chars == (x.to_s + y.to_s).chars
+  #   return true
+
+  # v = arr.reduce(:*)
+  # z = v.to_s.split(:,)
+  #   z.include?(arr.first)&&z.include?(arr.last)
+#   end
+# end
+
+# vamp_numbers([6,21]) == true
+# vamp_numbers([10,11]) == false
