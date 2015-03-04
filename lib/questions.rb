@@ -93,15 +93,5 @@ def vamp_numbers(arr)
 end
 
 
-  # product = x * y
-  # if product.to_s.chars == (x.to_s + y.to_s).chars
-  #   return true
-
-  # v = arr.reduce(:*)
-  # z = v.to_s.split(:,)
-  #   z.include?(arr.first)&&z.include?(arr.last)
-#   end
-# end
-
 # vamp_numbers([6,21]) == true
 # vamp_numbers([10,11]) == false
